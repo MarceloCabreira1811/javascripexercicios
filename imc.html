@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Calculo IMC</h1>
+
+    <label for="peso">Peso:</label>
+    <input type="text" id="peso">
+    <br>
+
+    <label for="altura">Altura:</label>
+    <input type="text" id="altura">
+    <br>
+
+    <button onclick="calcularimc()">Verificar imc</button>
+
+    <p>IMC:<span id="imc"></span></p>
+    <p>Situação:<span id="situacao"></span></p>
+    <script>
+
+        function calcularimc() {
+            let peso = parseFloat(document.getElementById("peso").value);
+            let altura = parseFloat(document.getElementById("altura").value);
+
+            let imc = peso / (altura ^ 2);
+            let situacao = "";
+            let cor = "";
+
+            if (imc >= 40) {
+                situacao = "Obesidade 3";
+                cor = "red";
+            }
+
+            else if (imc >= 35 && imc < 40) {
+                situacao = "obesidade 2"; cor = "red"
+            }
+
+
+            else if (imc >= 30 && imc < 35) {
+                situacao = "Obesidade 1"; cor = "red";
+            }
+
+            else if (imc >= 25 && imc < 30) {
+                situacao = "Sobrepeso";
+                cor = "orange";
+            }
+            else if (imc >= 20 && imc < 25) { situacao = "normal"; cor = "green" }
+
+
+            else if (imc < 20) { situacao = "Abaixo do peso"; cor = "yellow" }
+
+
+            document.getElementById("imc").innerHTML = imc;
+            document.getElementById("situacao").innerHTML = situacao;
+            document.getElementById("situacao").style.color = cor;
+
+        }
+
+
+
+    </script>
+</body>
+
+</html>
